@@ -1,5 +1,10 @@
 {
-    "plugins": [
-        "highlight"
-    ]
+    "pluginsConfig": {
+        "fontsettings": {
+            "theme": "night",
+            "family": "sans",
+            "size": 2
+        }
+    }
+
 }
