@@ -152,63 +152,63 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 > 
 > ---
 > 
-> `var dependencyObservable = require("ui/core/dependency-observable"); `
+> `var dependencyObservable = require("ui/core/dependency-observable");`
 > 
-> `function onMyPropertyChanged(eventData) { `
+> `function onMyPropertyChanged(eventData) {`
 > 
-> `    var myClassInstance = eventData.object; `
+> `var myClassInstance = eventData.object;`
 > 
-> `    var value = eventData.newValue; `
+> `var value = eventData.newValue;`
 > 
-> `    console.log("myProperty of the object " + myClassInstance.toString() + " changed with " + value); `
+> `console.log("myProperty of the object " + myClassInstance.toString() + " changed with " + value);`
 > 
-> `} `
+> `}`
 > 
 > `exports.myPropertyProperty = new dependencyObservable.Property(`
 > 
-> `    "myProperty", `
+> `"myProperty",`
 > 
-> `    "MyClass", `
+> `"MyClass",`
 > 
-> `    new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.None, onMyPropertyChanged)`
+> `new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.None, onMyPropertyChanged)`
 > 
-> `); `
+> `);`
 > 
-> `var MyClass = (function (_super) { `
+> `var MyClass = (function (_super) {`
 > 
-> `    __extends(MyClass, _super); `
+> `__extends(MyClass, _super);`
 > 
-> `    function MyClass() { `
+> `function MyClass() {`
 > 
-> `        _super.apply(this, arguments); `
+> `_super.apply(this, arguments);`
 > 
-> `    } `
+> `}`
 > 
-> `    Object.defineProperty(`
+> `Object.defineProperty(`
 > 
-> `       MyClass.prototype, `
+> `MyClass.prototype,`
 > 
-> `        "myProperty", `
+> `"myProperty",`
 > 
-> `        { `
+> `{`
 > 
-> `            get: function () { return this._getValue(exports.myPropertyProperty); }, `
+> `get: function () { return this._getValue(exports.myPropertyProperty); },`
 > 
-> `            set: function (value) { this._setValue(exports.myPropertyProperty, value); }, `
+> `set: function (value) { this._setValue(exports.myPropertyProperty, value); },`
 > 
-> `            enumerable: true, `
+> `enumerable: true,`
 > 
-> `            configurable: true `
+> `configurable: true`
 > 
-> `        }`
+> `}`
 > 
-> `    ); `
+> `);`
 > 
-> `    return MyClass; `
+> `return MyClass;`
 > 
-> `})(dependencyObservable.DependencyObservable); `
+> `})(dependencyObservable.DependencyObservable);`
 > 
-> `exports.MyClass = MyClass; `
+> `exports.MyClass = MyClass;`
 
 ### **添加一个验证回调**
 
@@ -220,15 +220,39 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 > 
 > ---
 > 
+> `var dependencyObservable = require("ui/core/dependency-observable");`
+> 
+> `function validateMyProperty(value) {`
+> 
+> `if (value > 0) { return true; }`
+> 
+> `return false;`
+> 
+> `}`
+> 
+> `exports.myPropertyProperty = new dependencyObservable.Property(`
+> 
+> `"myProperty",`
+> 
+> `"MyClass",`
+> 
+> `new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.None, null, validateMyProperty)`
+> 
+> `);`
+> 
+> `var MyClass = (function (_super) { ...`
+
+### **创建可继承的依赖属性**
+
+**示例 5** 演示如何创建一个可继承的依赖属性：
+
+### [**示例 5: 如何创建可继承的依赖属性.**](http://docs.nativescript.org/core-concepts/properties#example-5-how-to-create-inheritable-dependency-property)
+
+> ### JS
+> 
+> ---
+> 
 > `var dependencyObservable = require("ui/core/dependency-observable"); `
-> 
-> `function validateMyProperty(value) { `
-> 
-> `    if (value > 0) { return true; } `
-> 
-> `    return false; `
-> 
-> `} `
 > 
 > `exports.myPropertyProperty = new dependencyObservable.Property(`
 > 
@@ -236,9 +260,37 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 > 
 > `    "MyClass", `
 > 
-> `    new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.None, null, validateMyProperty)`
+> `    new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.Inheritable)`
 > 
 > `); `
 > 
-> `var MyClass = (function (_super) { ... `
+> `var MyClass = (function (_super) { `
+> 
+> `    __extends(MyClass, _super); `
+> 
+> `    function MyClass() { _super.apply(this, arguments); } `
+> 
+> `    Object.defineProperty(`
+> 
+> `        MyClass.prototype, `
+> 
+> `        "myProperty", `
+> 
+> `        { `
+> 
+> `            get: function () { return this._getValue(exports.myPropertyProperty); }, `
+> 
+> `            set: function (value) { this._setValue(exports.myPropertyProperty, value); }, `
+> 
+> `            enumerable: true, configurable: true `
+> 
+> `        }`
+> 
+> `    ); `
+> 
+> `    return MyClass; `
+> 
+> `})(dependencyObservable.DependencyObservable); `
+> 
+> `exports.MyClass = MyClass; `
 
