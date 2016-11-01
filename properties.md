@@ -21,7 +21,7 @@
 
 作为一个 TypeScript 框架， NativeScript 使用 TypeScript 属性。转译之后，这些ES5格式的结果兼容JavaScript的setter和getter方法支持类成员的工作，从而保证可读和可管理的代码。示例1中的代码演示了如何 TypeScript 转换为JavaScript。
 
-### **[示例 1: TypeScript 如何转换成JavaScript.](http://docs.nativescript.org/core-concepts/properties#example-1-how-typescript-is-transformed-to-javascript)**
+### [**示例 1: TypeScript 如何转换成JavaScript.**](http://docs.nativescript.org/core-concepts/properties#example-1-how-typescript-is-transformed-to-javascript)
 
 > ### TS
 > 
@@ -67,7 +67,7 @@ TypeScript 转译器由一个grunt 脚本支持运行。
 
 NativeScript有两种类型的属性： **dependency properties依赖属性** 和 **style properties样式属性**.。每种类型都会在后面部分介绍。
 
-## **[依赖属性](http://docs.nativescript.org/core-concepts/properties#dependency-properties)**
+## [**依赖属性**](http://docs.nativescript.org/core-concepts/properties#dependency-properties)
 
 ### **简介**
 
@@ -88,7 +88,7 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 
 示例2中的代码创建了一个基础的属性，该属性参照标准属性实现，添加了一个静态部分。
 
-### **[示例2: 如何参照标准属性创建添加l一个静态部分的属性.](http://docs.nativescript.org/core-concepts/properties#example-2-how-to-create-property-that-adds-a-static-part-compared-to-a-standard-property)**
+### [**示例2: 如何参照标准属性创建添加l一个静态部分的属性.**](http://docs.nativescript.org/core-concepts/properties#example-2-how-to-create-property-that-adds-a-static-part-compared-to-a-standard-property)
 
 > ### JS
 > 
@@ -146,7 +146,7 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 
 **示例 3** 演示了如何实现改变通知的功能。它添加一个回调函数， `onMyPropertyChanged` ，该函数对属性的变更打印一个消息。
 
-### [**示例 3: 如何操作 onPropertyChange事件.**](http://docs.nativescript.org/core-concepts/properties#example-3-how-to-handle-onpropertychange-event)
+### **[示例 3: 如何操作 onPropertyChange事件.](http://docs.nativescript.org/core-concepts/properties#example-3-how-to-handle-onpropertychange-event)**
 
 > ### JS
 > 
@@ -214,7 +214,7 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 
 **示例 4** 演示了如何实现值验证。 它添加了一个回调函数，`validateMyProperty`，该函数拿到新属性值并用一个简单的规则验证它。
 
-### [**示例 4: 如何实现值验证.**](http://docs.nativescript.org/core-concepts/properties#example-4-how-to-implement-value-validation)
+### **[示例 4: 如何实现值验证.](http://docs.nativescript.org/core-concepts/properties#example-4-how-to-implement-value-validation)**
 
 > ### JS
 > 
@@ -246,51 +246,49 @@ NativeScript有两种类型的属性： **dependency properties依赖属性** �
 
 **示例 5** 演示如何创建一个可继承的依赖属性：
 
-### [**示例 5: 如何创建可继承的依赖属性.**](http://docs.nativescript.org/core-concepts/properties#example-5-how-to-create-inheritable-dependency-property)
+### **[示例 5: 如何创建可继承的依赖属性.](http://docs.nativescript.org/core-concepts/properties#example-5-how-to-create-inheritable-dependency-property)**
 
 > ### JS
 > 
-> ---
-> 
-> `var dependencyObservable = require("ui/core/dependency-observable"); `
+> `var dependencyObservable = require("ui/core/dependency-observable");`
 > 
 > `exports.myPropertyProperty = new dependencyObservable.Property(`
 > 
-> `    "myProperty", `
+> `    "myProperty",`
 > 
-> `    "MyClass", `
+> `"MyClass",`
 > 
-> `    new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.Inheritable)`
+> `new dependencyObservable.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.Inheritable)`
 > 
-> `); `
+> `);`
 > 
-> `var MyClass = (function (_super) { `
+> `var MyClass = (function (_super) {`
 > 
-> `    __extends(MyClass, _super); `
+> `__extends(MyClass, _super);`
 > 
-> `    function MyClass() { _super.apply(this, arguments); } `
+> `function MyClass() { _super.apply(this, arguments); }`
 > 
-> `    Object.defineProperty(`
+> `Object.defineProperty(`
 > 
-> `        MyClass.prototype, `
+> `MyClass.prototype,`
 > 
-> `        "myProperty", `
+> `"myProperty",`
 > 
-> `        { `
+> `{`
 > 
-> `            get: function () { return this._getValue(exports.myPropertyProperty); }, `
+> `get: function () { return this._getValue(exports.myPropertyProperty); },`
 > 
-> `            set: function (value) { this._setValue(exports.myPropertyProperty, value); }, `
+> `set: function (value) { this._setValue(exports.myPropertyProperty, value); },`
 > 
-> `            enumerable: true, configurable: true `
+> `enumerable: true, configurable: true`
 > 
-> `        }`
+> `}`
 > 
-> `    ); `
+> `);`
 > 
-> `    return MyClass; `
+> `return MyClass;`
 > 
-> `})(dependencyObservable.DependencyObservable); `
+> `})(dependencyObservable.DependencyObservable);`
 > 
-> `exports.MyClass = MyClass; `
+> `exports.MyClass = MyClass;`
 
