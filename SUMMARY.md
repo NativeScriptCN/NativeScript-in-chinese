@@ -14,4 +14,5 @@
     * [数据绑定](数据绑定.md)
     * [应用生命周期](应用生命周期.md)
     * [属性](properties.md)
+    * [event](event.md)
 
