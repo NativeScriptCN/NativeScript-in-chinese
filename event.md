@@ -8,13 +8,13 @@
 * [Avoiding memory leaks避免内存泄漏](http://docs.nativescript.org/core-concepts/events#avoiding-memory-leaks)
 * [Working with weak events用弱事件工作](http://docs.nativescript.org/core-concepts/events#working-with-weak-events)
 
-## [**概览**](http://docs.nativescript.org/core-concepts/events#overview)
+## **[概览](http://docs.nativescript.org/core-concepts/events#overview)**
 
 事件是从事件发射器发送的消息，以表示特定行为的发生。此行为可以由用户行为（如点击）或程序逻辑（例如，指示从服务器下载图像已完成）生成。引发事件的对象叫作**事件发送器**（简称**发送器**）或者**事件触发器**。消费事件的对象叫作**事件监听器**（简称**监听器**）或者**事件处理器**。
 
 NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程。有关这方面更多信息查看 [API Reference](http://docs.nativescript.org/api-reference/classes/_data_observable_.observable.html) 。因为这是NativeScript框架的基本类之一，几乎所有 NativeScript 对象（组件）都有处理事件的选项。
 
-## [**添加事件处理器**](http://docs.nativescript.org/core-concepts/events#adding-an-event-handler)
+## **[添加事件处理器](http://docs.nativescript.org/core-concepts/events#adding-an-event-handler)**
 
 添加事件处理器意思是设置一个函数（方法），以在事件引发的时候执行。
 
@@ -22,7 +22,7 @@ NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程
 
 下面的例子显示了如何用简化语法和完整语法添加一个事件处理器。这里有个可选的第三个参数代表 `this` 参数。
 
-### [**示例1 \(JS\): 用简化和完整语法添加一个事件处理器或事件监听器**](http://docs.nativescript.org/core-concepts/events#example-1-javascript-adding-an-event-handler-or-an-event-listener-using-the-short-and-full-syntax)
+### **[示例1 \(JS\): 用简化和完整语法添加一个事件处理器或事件监听器](http://docs.nativescript.org/core-concepts/events#example-1-javascript-adding-an-event-handler-or-an-event-listener-using-the-short-and-full-syntax)**
 
 > `//Adding a listener with the short syntax简化语法`
 > 
@@ -52,7 +52,7 @@ NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程
 > 
 > `testButton2.addEventListener(buttonModule.Button.tapEvent, onTap, this);`
 
-### [**示例 1 \(XML\): 用XML声明添加事件处理器或事件监听器**](http://docs.nativescript.org/core-concepts/events#example-1-xml-adding-an-event-handler-or-an-event-listener-using-an-xml-declaration)
+### **[示例 1 \(XML\): 用XML声明添加事件处理器或事件监听器](http://docs.nativescript.org/core-concepts/events#example-1-xml-adding-an-event-handler-or-an-event-listener-using-an-xml-declaration)**
 
 > `<Page>`
 > 
@@ -66,7 +66,7 @@ NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程
 
 你需要一个后台代码文件（看示例2）来写函数体（后台代码文件有相同的文件名，但不同的后缀：.js或.ts，取决于你使用什么语言）。
 
-### [**示例 2: 关联按钮点击事件**](http://docs.nativescript.org/core-concepts/events#example-2-hooking-to-a-button-tap-event)
+### **[示例 2: 关联按钮点击事件](http://docs.nativescript.org/core-concepts/events#example-2-hooking-to-a-button-tap-event)**
 
 > **JS**
 > 
@@ -90,13 +90,13 @@ NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程
 > 
 > `}`
 
-## [**移除事件监听器**](http://docs.nativescript.org/core-concepts/events#removing-an-event-listener)
+## **[移除事件监听器](http://docs.nativescript.org/core-concepts/events#removing-an-event-listener)**
 
 通常你没必要移除事件监听器。当你需要只接收一次事件或者释放资源时，你可以这样做。在此情况下，你可以使用**示例3**的方法。
 
 > ### **没有语法来通过XML声明移除事件监听器。**
 
-### **[示例 3: 移除按钮点击事件监听器](http://docs.nativescript.org/core-concepts/events#example-3-removing-a-button-tap-event-listener)**
+### [**示例 3: 移除按钮点击事件监听器**](http://docs.nativescript.org/core-concepts/events#example-3-removing-a-button-tap-event-listener)
 
 > **JS**
 > 
@@ -110,7 +110,7 @@ NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程
 > 
 > `testButton2.removeEventListener(buttonModule.Button.tapEvent);`
 
-## [**属性变动事件**](http://docs.nativescript.org/core-concepts/events#propertychange-event)
+## **[属性变动事件](http://docs.nativescript.org/core-concepts/events#propertychange-event)**
 
 `Observable`类提供一个内置事件叫作 `propertyChange` ，当属性改变时该事件被调用。**示例4** 显示了如何订阅该事件。
 
@@ -216,49 +216,133 @@ NativeScript框架提供了一个 `Observable` 类支持用事件工作的进程
 
 当属性值改变时， 触发示例6代码片段里的 `propertyChange`事件。
 
-## **[创建自定义事件](http://docs.nativescript.org/core-concepts/events#creating-a-custom-event)**
+## [**创建自定义事件**](http://docs.nativescript.org/core-concepts/events#creating-a-custom-event)
 
-如果你的业务逻辑需要，你可能想要在特别的行为上触发（引发或发出）一个自定义事件（参看**示例7**）。为此，当该行为完成时调用 `Obser``vable.notify()` 方法。该方法取得 [EventData 接口](http://docs.nativescript.org/api-reference/interfaces/_data_observable_.eventdata.html) 的任何实施者作为事件数据。这包括有关一个事件的基本信息—— 它的名字作为 `eventName` ，且事件发送器的一个实例作为 `object` 。
+如果你的业务逻辑需要，你可能想要在特别的行为上触发（引发或发出）一个自定义事件（参看**示例7**）。为此，当该行为完成时调用 ```Obser``vable.notify()``` 方法。该方法取得 [EventData 接口](http://docs.nativescript.org/api-reference/interfaces/_data_observable_.eventdata.html) 的任何实施者作为事件数据。这包括有关一个事件的基本信息—— 它的名字作为 `eventName` ，且事件发送器的一个实例作为 `object` 。
 
-### [**示例 7: 创建自定义事件**](http://docs.nativescript.org/core-concepts/events#example-7-creating-a-custom-event)
+### **[示例 7: 创建自定义事件](http://docs.nativescript.org/core-concepts/events#example-7-creating-a-custom-event)**
 
 > **JS**
 > 
 > ---
 > 
-> `var eventData = { `
+> `var eventData = {`
 > 
-> `    eventName: "myCustomEventName", `
+> `eventName: "myCustomEventName",`
 > 
-> `    object: this `
+> `object: this`
 > 
-> `}; `
+> `};`
 > 
-> `this.notify(eventData); `
+> `this.notify(eventData);`
 
 引发一个事件的最少必要信息是 `eventName` ——它将被用来执行与此事件相关联的所有事件处理器。
 
 下一步是关联到该事件：
 
-> `var myCustomObject = new MyClass(); `
+> `var myCustomObject = new MyClass();`
 > 
 > `myCustomObject.on(`
 > 
-> `    "myCustomEventName", `
+> `"myCustomEventName",`
 > 
-> `    function(eventData){ console.log(eventData.eventName + " has been raised! by: " + eventData.object); }`
+> `function(eventData){ console.log(eventData.eventName + " has been raised! by: " + eventData.object); }`
 > 
-> `)  `
+> `)`
 
-A similar logic is implemented for the `propertyChange` event, so if your business logic requires that,`propertyChange` can be emitted manually through the `notify()` method \(without using the`Observable.set()` method that also fires the `propertyChange` event\). 
+类似的逻辑是实现 `propertyChange` 事件，所以如果你的业务逻辑要求这样， `propertyChange` 可以手动通过 `notify``()` 方法发出的（不使用 `Observable.set()` 方法也可以触发 `propertyChange` 事件）。
 
-类似的逻辑是实现 `propertyChange` 事件，所以如果你的业务逻辑要求这样， `propertyChange` 可以手动通过 `notify()` 方法发出的（不使用 `Observable.set()` 方法也可以触发 `propertyChange` 事件）。
+## **[避免内存泄漏](http://docs.nativescript.org/core-concepts/events#avoiding-memory-leaks)**
 
-## [**避免内存泄漏**](http://docs.nativescript.org/core-concepts/events#avoiding-memory-leaks)
+虽然无线电台的比较便于理解这个概念，但事件内部有一点复杂。为了能够通知监听器，发送器包含一个指向监听器的指针。即使你将监听器对象设置为 `null` 或 `undefined` ，它也不符合垃圾回收的条件，因为发送者是活的，并对监听器对象有一个实时引用。当发送者和听者的对象生存期存在显著差异时， 这可能会导致在内存泄漏。 
 
-Although the radio station comparison is convenient for understanding the concept, events are a bit more complicated on the inside. To be able to notify the listener, the sender contains a pointer to the listener. Even if you set the listener object to `null` or `undefined`, it is not eligible for garbage collection, because the sender is alive and has a live reference to the listener object. This could result in a memory leak when the object lifetimes of the sender and the listener differ significantly.
+考虑这个场景：一个UI元素创建了一大堆子控件，每个都关联到一个父元素的事件。然后释放一个子控件（在列表视图滚动的情况下），会引起内存泄漏。
 
-Consider this scenario: A UI element creates a lot of child controls, each of which hooks to an event of the parent. Then a child control is released \(during a list view scrolling for instance\), causing a memory leak.
+要避免这些内存泄漏，比较好的实践是释放监听器对象之前移除监听器的处理器。不幸的是，有时你不能确定调用 `off` 或 `removeEventListener` 函数的具体时间。在此情况下，使用 NativeScript 框架的另一个选项： _**弱事件**_ 。
 
-To prevent these memory leaks, it is a good practice to remove your event listener handler before releasing the listener object. Unfortunately, sometimes you cannot determine the exact time to call the `off` or `removeEventListener` function. In such cases, use another option of the NativeScript framework: _weak events_.
+## [**使用 Weak Events**](http://docs.nativescript.org/core-concepts/events#working-with-weak-events)
+
+一个弱事件，就像其名字表露的，创建一个监听器对象的弱引用。它会帮你释放监听器对象而不用移除监听器指针。 
+
+### [**添加弱事件监听器**](http://docs.nativescript.org/core-concepts/events#working-with-weak-events-Adding)
+
+使用弱事件监听器和普通事件非常类似。**示例8**显示了如何添加一个弱事件监听器（为了清晰包括了代码注释）：
+
+### [**示例 8: 创建弱事件并 处理 property change 事件**](http://docs.nativescript.org/core-concepts/events#working-with-weak-events-Example)
+
+> **JS**
+> 
+> ---
+> 
+> `var weakEventListenerModule = require("ui/core/weak-event-listener"); `
+> 
+> `var buttonModule = require("ui/button"); `
+> 
+> `var observableModule = require("data/observable"); `
+> 
+> `var testButton = new buttonModule.Button(); `
+> 
+> `testButton.text = "Test"; `
+> 
+> `testButton.on(buttonModule.Button.tapEvent, function () { source.set("testProperty", "change" + counter); }); `
+> 
+> `var source = new observableModule.Observable(); `
+> 
+> `var counter = 0; `
+> 
+> `var handlePropertyChange = function () { counter++; this.text = counter + ""; }; `
+> 
+> `var weakEL = weakEventListenerModule.WeakEventListener; `
+> 
+> `var weakEventListenerOptions: `
+> 
+> `weakEventListenerModule.WeakEventListenerOptions = { `
+> 
+> `    // create a weak reference to the event listener object `
+> 
+> `    targetWeakRef: new WeakRef(this), `
+> 
+> `   // create a weak reference to the event sender object `
+> 
+> `    sourceWeakRef: new WeakRef(this.source), `
+> 
+> `    // set the name of the event `
+> 
+> `    eventName: observable.Observable.propertyChangeEvent, `
+> 
+> `    // set the event handler `
+> 
+> `   handler: handlePropertyChange, `
+> 
+> `    // (optional) set the context in which to execute the handler `
+> 
+> `    handlerContext: testButton, `
+> 
+> `    // (optional) set a specialized property used for extra event recognition `
+> 
+> `    key: this.options.targetProperty `
+> 
+> `} `
+> 
+> `weakEL.addWeakEventListener(this.weakEventListenerOptions); `
+
+The function demonstrates how to use the `handlerContext` property—its value is taken as an argument to `this` inside the event handler function.
+
+示例8显示了如何联接一个弱事件监听器到一个 observable 对象实例。仔细看看 `handlePropertyChange` 函数，显示了当 `propertyChange` 事件触发时（通过点击事件）， `this` 对象的 `text` 属性变化。该函数演示了如何使用 `handlerContext` 属性——在事件处理器内部，它的值被拿去当作 `this` 的一个参数。
+
+### [**移除弱事件**](http://docs.nativescript.org/core-concepts/events#working-with-weak-events-Removing)
+
+在事件触发调用一个函数之时， `targetWeakRef` 和 `key` 属性是可选的。然而，他们允许移除事件监听器。这些属性被用作键值对的键（key）来保存弱事件监听器。
+
+> **JS**
+> 
+> ---
+> 
+> `weakEL.removeWeakEventListener(this.weakEventListenerOptions); `
+
+
+
+
+
+
 
