@@ -1,4 +1,4 @@
-# [**Modules**](http://docs.nativescript.org/core-concepts/modules#modules)
+# **[模块](http://docs.nativescript.org/core-concepts/modules#modules)**
 
 为了让你使用目标平台的本地设备和平台功能， NativeScript 采用一个模块化的设计模式。所有设备，平台或UI功能都位于独立的模块内部。要使用模块提供的功能，你就需要 **require** 该模块。
 
@@ -22,7 +22,7 @@
 
 * [WHATWG polyfills](http://docs.nativescript.org/core-concepts/modules#whatwg-polyfills)
 
-  ## **[核心模块](http://docs.nativescript.org/core-concepts/modules#core-modules)**
+  ## [**核心模块**](http://docs.nativescript.org/core-concepts/modules#core-modules)
 
 * [application](http://docs.nativescript.org/cookbook/application): 为应用抽象提供相关的方法（就是把App当作一个对象？！）。
 
@@ -37,10 +37,11 @@
 * [timer](http://docs.nativescript.org/cookbook/timer): 让你创建，启动，停止和重启定时器。
 
 * [trace](http://docs.nativescript.org/cookbook/trace): 让你基于分类跟踪和打印特定信息。
+
 * [ui\/image-cache](http://docs.nativescript.org/cookbook/ui/image-cache): 提供 `image-cache`  类，它处理图片下载请求并缓存已经下载的图片。
 * [connectivity](http://docs.nativescript.org/cookbook/connectivity): 让你检查互联网连接并监控其变化。
 
-## **[设备功能模块](http://docs.nativescript.org/core-concepts/modules#device-functionality-modules)**
+## [**设备功能模块**](http://docs.nativescript.org/core-concepts/modules#device-functionality-modules)
 
 * [camera](http://docs.nativescript.org/cookbook/camera): 让你用设备的相机照像。
 * [location](http://docs.nativescript.org/cookbook/location): 让你使用设备的定位传感器。
@@ -49,13 +50,13 @@
 * [file-system](http://docs.nativescript.org/cookbook/file-system): 让你用设备的文件系统工作。 为文件系统实体提供高层次的抽象，如文件、文件夹、已知文件夹、路径、分隔符等。
 * [ui\/gestures](http://docs.nativescript.org/cookbook/ui/gestures): 提供 `GesturesObserver` 类，它让你发现和响应用户手势。
 
-## **[数据模块](http://docs.nativescript.org/core-concepts/modules#data-modules)**
+## [**数据模块**](http://docs.nativescript.org/core-concepts/modules#data-modules)
 
 * [data\/observable](http://docs.nativescript.org/cookbook/data/observable): 提供 `Observable` 类， 在 MVVM 模式里它代表一个可观察的数据或对象。
 * [data\/observable-array](http://docs.nativescript.org/cookbook/data/observable-array): 提供 `ObservableArray` 类，它在一个对象集合里面检测并响应变动。
 * [data\/virtual-array](http://docs.nativescript.org/cookbook/data/virtual-array): 提供 `VirtualArray` 类， 它是一个高级的类似数组的类，有助于按需加载项目（懒加载？）。
 
-## **[UI模块](http://docs.nativescript.org/core-concepts/modules#user-interface-modules)**
+## [**UI模块**](http://docs.nativescript.org/core-concepts/modules#user-interface-modules)
 
 * [ui\/frame](http://docs.nativescript.org/cookbook/ui/frame): 提供 `Frame` 类代表逻辑 `View` 单元，它在一个app里负责导航。
 * [ui\/page](http://docs.nativescript.org/cookbook/ui/page): 提供 `Page` 类 ， 代表一个逻辑单元用以在 `Frame` 里导航 。NativeScript App 包括若干page。
@@ -95,7 +96,7 @@
 * [ui\/time-picker](http://docs.nativescript.org/cookbook/ui/time-picker): 提供 `TimePicker` 类， 表示一个标准的时间选择组件。
 * [ui\/placeholder](http://docs.nativescript.org/ui/placeholder): 提供 `Placeholder` 类， 让你可以添加一个原生窗口部件到视觉树。
 
-## [**WHATWG Polyfills**](http://docs.nativescript.org/core-concepts/modules#whatwg-polyfills)
+## **[WHATWG Polyfills](http://docs.nativescript.org/core-concepts/modules#whatwg-polyfills)**
 
 * [fetch](http://docs.nativescript.org/cookbook/fetch): The `Fetch` polyfill that provides requests, responses, and the process that binds them: fetching. [https:\/\/fetch.spec.whatwg.org\/](https://fetch.spec.whatwg.org/)
 
