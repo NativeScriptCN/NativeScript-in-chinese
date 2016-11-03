@@ -15,5 +15,5 @@
     * [应用生命周期](应用生命周期.md)
     * [属性](properties.md)
     * [事件](event.md)
-* [Modules](modules.md)
+    * [模块](modules.md)
 
