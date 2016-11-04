@@ -6,7 +6,7 @@ NativeScript允许你从底层平台使用所有原生API。要完成这个行�
 
 本文中，你将学习如何通过JS使用不同的数据类型参数来调用原生API。更多信息，参看 [iOS Runtime](http://docs.nativescript.org/runtimes/ios/marshalling/Marshalling-Overview.html) 和 [Android Runtime](http://docs.nativescript.org/runtimes/android/marshalling/overview.html) 章节的有关数据转换的具体平台资源。
 
-# **[数字型](http://docs.nativescript.org/core-concepts/accessing-native-apis-with-javascript#numeric-types)**
+# [**数字型**](http://docs.nativescript.org/core-concepts/accessing-native-apis-with-javascript#numeric-types)
 
 当地原生的数值类型（例如，IOS的char，int，float，double 和 Android的 byte, short, int, long, double, float ）都将被隐式地转换为JavaScript的数值，反之亦然。例如，当你在IOS上运行下面的代码：
 
@@ -22,7 +22,7 @@ iOS Runtime将转换JS数字字面量为原生的 double类型，并把它们传
 
 原生的 `java.lang.Math.min()` 要求有两个整形。 Android Runtime 知道 `java.lang.Math.min()` 的签名并将字面量3和4用JAVA整形数据类型翻译成它们的表述。返回的整形同样也自动地翻译成JS数字并传递给 `console.log()` 。
 
-## **[类和对象](http://docs.nativescript.org/core-concepts/accessing-native-apis-with-javascript#classes-and-objects)**
+## [**类和对象**](http://docs.nativescript.org/core-concepts/accessing-native-apis-with-javascript#classes-and-objects)
 
 所有原生的类在JS世界里由一个构造函数代表。一个原生类里的每一个静态方法在JS构造函数之上成为一个函数，且每个实例方法在JS原型之上成为一个函数。在IOS上执行这段代码：
 
@@ -40,7 +40,7 @@ iOS Runtime调用 `[[NSMutableArray alloc] init]` 且返回的原生对象被转
 > 
 > `button.setText("My Button");// "My Button" is converted to java.lang.String`
 
-# **[字符串](http://docs.nativescript.org/core-concepts/accessing-native-apis-with-javascript#string)**
+## [**字符串**](http://docs.nativescript.org/core-concepts/accessing-native-apis-with-javascript#string)
 
 JavaScript 字符串在Android上隐式地整理成 `java.lang.String` ， 在IOS上是`NSString` ，反之亦然。
 
@@ -58,7 +58,13 @@ JavaScript 字符串在Android上隐式地整理成 `java.lang.String` ， 在IO
 > 
 > `var file = new java.io.File('myfile.txt'); // 'myfile.txt' 转换成 java.lang.String`
 
-The exception to this are the methods on `NSString` classes declared as returning `instancetype` - init methods and factory methods. This means that a call to `NSString.stringWithString` whose return type in Objective-C is `instancetype` will return a wrapper around a `NSString` instance, rather than a JavaScript string.
+ 这里有个例外是 `NSString` 类之上声明作为返回的 `instancetype` 的方法——初始化方法和工厂方法。这意味着对 `NSString.stringWithString` 的调用，其在 Objective-C里的返回类型是 `instancetype` ，将返回一个包装器，外面包裹着一个 `NSString` 实例，相对JS字符串而言。
 
-Exception: Methods on `NSString` classes declared as returning `instancetype` \(e.g., init methods and factory methods\). For example, calls to `NSString.stringWithString`return `instancetype` results in Objective-C. In your NativeScript code, such calls will return a wrapper around a `NSString` instance instead of a JavaScript string.
+
+
+> ### 例外：
+> 
+> 在`NSString` 类之上声明作为返回的 `instancetype` 的方法  \(如，初始化方法和工厂方法\) 。例如，对 `NSString.stringWithString` 的调用在 Objective-C 里结果是返回 `instancetype` 。在你的 NativeScript 代码里，类似的调用会返回包裹着一个 `NSString` 实例的包装器而替代JS字符串。
+
+
 
