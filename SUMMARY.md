@@ -2,12 +2,5 @@
 
 * [说明](README.md)
 * [新手教程](chapter1.md)
-    * [chapter 0—新手引导](新手引导.md)
-    * [Chapter 1— APP跑起来](chapter-1—-app跑起来.md)
-    * [Chapter 2—UI 创建用户界面](chapter-2—ui-创建用户界面.md)
-    * [Chapter 3—应用逻辑\*\*\*\*\*](chapter-3—应用逻辑.md)
-    * [Chapter 4—NativeScript 模块](chapter-4—nativescript-模块.md)
-    * [Chapter 5—插件和npm模块](chapter-5—插件和npm.md)
-    * [chapter—6 访问原生API](chapter—6-new.md)
 * [核心概念](核心概念.md)
 
