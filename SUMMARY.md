@@ -16,5 +16,5 @@
     * [属性](properties.md)
     * [事件](event.md)
     * [模块](modules.md)
-* [accessing-native-apis](accessing-native-apis.md)
+    * [用js使用原生API](accessing-native-apis.md)
 
