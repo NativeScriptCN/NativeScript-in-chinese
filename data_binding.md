@@ -287,3 +287,76 @@ NativeScript 支持不同种类的表达式，包括：
 #### [Using converters in bindings](http://docs.nativescript.org/core-concepts/data-binding#using-converters-in-bindings)在绑定里使用转换
 
 讲到双向绑定，这里有个常规的问题——有不同的方法存储和显示数据。或许这里最好的例子就是日期和时间对象了。日期和时间信息是以数字或数字序列（对于索引、搜索和其他数据库操作相当有用）存储的，但这对于应用使用者来说不是显示日期的最可能的选项。同时当用户输入日期时，这里有个另外的问题（在下面的例子里，用户在TextField里输入）。用户输入的结果会是个字符串，它将按照用户的喜好格式化。这个字符串应该转换成正确的日期对象。我们来看看用NativeScript 绑定如何处理。
+
+#### [Example 5: 处理 textField 日期输入并按照偏好格式化](http://docs.nativescript.org/core-concepts/data-binding#example-5-handle-textfield-date-input-and-formatted-in-accordance-preferences)
+**XML**
+
+
+> **`<Page> `**
+
+> **`<StackLayout> `**
+
+> **`<TextField text="{{ testDate, testDate | dateConverter('DD.MM.YYYY') }}" /> `**
+
+> **`</StackLayout>` **
+
+> **`</Page> `**
+
+**JS**
+
+>**`var dateConverter = { `
+
+>`    toView: function (value, format) { `
+
+>`        var result = format; `
+
+>`        var day = value.getDate(); `
+
+>`        result = result.replace("DD", day < 10 ? "0" + day : day);` 
+
+>`        var month = value.getMonth() + 1; `
+
+>`        result = result.replace("MM", month < 10 ? "0" + month : month); `
+
+>`        result = result.replace("YYYY", value.getFullYear()); `
+
+>`        return result; `
+
+>`    }, `
+
+>`    toModel: function (value, format) { `
+
+>`        var ddIndex = format.indexOf("DD"); `
+
+>`        var day = parseInt(value.substr(ddIndex, 2)); `
+
+>`        var mmIndex = format.indexOf("MM"); `
+
+>`        var month = parseInt(value.substr(mmIndex, 2)); `
+
+>`        var yyyyIndex = format.indexOf("YYYY"); `
+
+>`        var year = parseInt(value.substr(yyyyIndex, 4));` 
+
+>`        var result = new Date(year, month - 1, day); `
+
+>`        return result; `
+
+>`    } `
+
+>`} `
+
+>`source.set("dateConverter", dateConverter); `
+
+>`source.set("testDate", new Date()); `
+
+>`page.bindingContext = source; `**
+
+ 
+注意表达式里这个特殊的操作符(|)。上面的代码片段（XML 和 JavaScript）会以日日.月月.年年年年格式（toView函数）显示日期，并且当以相同格式输入一个新的日期时，它会被转换成有效的日期对象（toModel函数）。当一个数据要被转换时，转换对象应该有一个或两个函数（toView 和 toModel）执行。当数据作为任何UI视图的值要显示给最终用户时toView 函数被调用；当这里存在可编辑元素（比如TextField）且用户输入一个新的值时toModel函数会被调用。在单向绑定情况下，该转换对象可能只有一个toView函数或者它就是一个函数。所有的转换器函数都有一个参数数组，其中第一个参数是将被转换的值，所有其他参数都是在转换器定义中定义的自定义参数。
+
+>####**评论：**
+
+>任何转换器方法里的运行时错误都会被自动处理且应用不会暂停，但视图模型中的数据将不会被改变（在错误的情况下）并且更多错误信息将被记录到控制台。要启用它，通过一个Error 目录使用内置的trace模块。一个简化的日期转换器只是为了浅尝下例子，它不应该被用来作为一个从日期到字符串的全功能的转换器，反之亦然。
+
+
