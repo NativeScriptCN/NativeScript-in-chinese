@@ -256,3 +256,34 @@
 > `} `
 
 > `exports.pageLoaded = pageLoaded;`
+
+#### [**使用表达式绑定**](http://docs.nativescript.org/core-concepts/data-binding#using-expressions-for-bindings)
+ The result should be a TextFieldelement that will display the value of the sourceProperty followed by " some static text" string. 
+你可以创建一个自定义表达式来绑定。自定义表达式能够在需要对UI实现某些逻辑的时候帮到你，同时保持基本的业务数据和逻辑清晰。为了更具体，我们来看一个基本的绑定表达式示例。它的结果应该是一个TextField元素，将“some static text”字符串合并计算sourceProperty的值。
+
+`<Page>`
+
+`    <StackLayout>`
+
+`        <TextField text="{{ sourceProperty, sourceProperty + ' some static text' }}" />`
+
+`    </StackLayout>`
+
+`</Page>`
+
+
+### **注意：**
+> **
+可以使用没有显式命名源属性的绑定表达式(`TextField text=""`)。在此情况下，$value作为源属性使用。然而，当一个嵌套的属性本应观察到变化(比如item.nestedProp)时，这可能导致问题。代表绑定上下文，并且当绑定上下文的任何属性发生变化时，表达式的值会重新计算。既然nestedProp在项目里不是绑定上下文的属性，那么它就没有就没有连接属性变化监听器，且nestedProp的改变就不会填充到UI。因此，为了消除这些问题，指定哪些属性应该被用作源属性是一个很好的做法。**
+
+
+完整的绑定语法包含三个参数——首先是源属性，它会被监听到变动。第二个参数是会被计算的表达式。第三个参数声明是否是双向绑定。早前提到过，XML声明默认创建一个双向绑定，所以在该例里，第三个参数可以省略。保留其余两个参数意味着只有当源属性发生变化时自定义表达式才会重新计算。第一个表达式也可以省略；你这样做的话，那么每次绑定上下文变化时自定义表达式都会计算。因此，建议的语法是在XML声明里包含两个参数，就像我们例子里的——关注的属性和要被计算的表达式。
+
+#### [Supported expressions](http://docs.nativescript.org/core-concepts/data-binding#supported-expressions)支持的表达式
+
+NativeScript 支持不同种类的表达式，包括： 
+
+
+#### [Using converters in bindings](http://docs.nativescript.org/core-concepts/data-binding#using-converters-in-bindings)在绑定里使用转换
+
+讲到双向绑定，这里有个常规的问题——有不同的方法存储和显示数据。或许这里最好的例子就是日期和时间对象了。日期和时间信息是以数字或数字序列（对于索引、搜索和其他数据库操作相当有用）存储的，但这对于应用使用者来说不是显示日期的最可能的选项。同时当用户输入日期时，这里有个另外的问题（在下面的例子里，用户在TextField里输入）。用户输入的结果会是个字符串，它将按照用户的喜好格式化。这个字符串应该转换成正确的日期对象。我们来看看用NativeScript 绑定如何处理。
