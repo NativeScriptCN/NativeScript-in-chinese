@@ -358,5 +358,64 @@ NativeScript 支持不同种类的表达式，包括：
 >####**评论：**
 
 >任何转换器方法里的运行时错误都会被自动处理且应用不会暂停，但视图模型中的数据将不会被改变（在错误的情况下）并且更多错误信息将被记录到控制台。要启用它，通过一个Error 目录使用内置的trace模块。一个简化的日期转换器只是为了浅尝下例子，它不应该被用来作为一个从日期到字符串的全功能的转换器，反之亦然。
+转换器不但能接收静态自定义参数，而且能从绑定上下文接受任何值。例如：
+
+####[Example 6: 转换新日期为有效的日期对象](http://docs.nativescript.org/core-concepts/data-binding#example-6-converting-the-new-date-input-to-a-valid-date-object)
+**XML**
+>**`<Page> `**
+
+>**`<StackLayout>`** 
+
+>**`<TextField text="{{ testDate, testDate | dateConverter(dateFormat) }}" /> `**
+
+>**`</StackLayout> `**
+
+>**`</Page> `**
+
+**JS**
+>**`... `**
+
+>**`source.set("dateFormat", "DD.MM.YYYY"); `**
+
+>**`page.bindingContext = source; `**
+
+
+设定转换器函数和一个位于绑定上下文内部的参数，对于保证数据正确转换是很有用的。然而，这不是listview项目绑定时的情况。问题来自于listview子项目的绑定上下文是一个数据子项目，它是任何集合（数组）的一部分，并请求转换——转换器和它的参数应当添加到该数据子项目，它将导致多个转换器实例。用NativeScript处理这类问题相当简单。绑定基础设施寻求应用级的资源，以找到一个适当的转换器和参数。因此，您可以在应用程序模块中的资源中添加转换器(app目录的resources目录中)。为了更清楚，查看下面的例子（XML和JS）：
+
+####[Example 7: 在App模块的resource目录中添加转换器](http://docs.nativescript.org/core-concepts/data-binding#example-7-adding-converters-in-the-application-module-resources)
+####**XML**
+
+>**`<Page>`**
+
+>**`    <StackLayout>`**
+
+>**`        <ListView items="{{ items }}" height="200">`**
+
+>**`            <ListView.itemTemplate>`**
+
+>**`                <Label text="{{ itemDate | dateConverter(dateFormat) }}" />`**
+
+>**`            </ListView.itemTemplate>`**
+
+>**`        </ListView>`**
+
+>**`    </StackLayout>`**
+
+>**`</Page>`**
+
+####**JS**
+>**`var appModule = require("application"); var list = []; var i; for(i = 0; i < 5; i++) { list.push({ itemDate: new Date()}); } source.set("items", list); var dateConverter = function(value, format) { var result = format; var day = value.getDate(); result = result.replace("DD", day < 10 ? "0" + day : day); var month = value.getMonth() + 1; result = result.replace("MM", month < 10 ? "0" + month : month); result = result.replace("YYYY", value.getFullYear()); return result; }; appModule.resources["dateConverter"] = dateConverter; appModule.resources["dateFormat"] = "DD.MM.YYYY";`** 
+
+
+####**注意：**
+>应用模块是静态的并可以在整个应用内部达到，它只需require。另一个不同之处是日期转换器是一个函数，取代了拥有toView 和 toModel两个方法的对象。由于通常的操作是将数据从模型转换到视图，它就作为一个toView函数。
+
+####[终止绑定](http://docs.nativescript.org/core-concepts/data-binding#stop-binding)
+
+一般来说没有必要明确地终止绑定，因为绑定对象使用弱引用，从而防止任何内存泄漏。然而，有一些情况下绑定必须终止。为了终止现有的数据绑定，只需用目标属性的名称作为参数调用unbind方法。
+####**JS**
+>**`targetTextField.unbind("text");`** 
+
+你可以在[API参考](http://docs.nativescript.org/api-reference/classes/_ui_core_bindable_.bindable.html)里找到更多关于绑定的信息。
 
 
