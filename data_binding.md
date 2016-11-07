@@ -213,3 +213,47 @@
 ### [**Binding to a parent binding context**](http://docs.nativescript.org/core-concepts/data-binding#binding-to-a-parent-binding-context)绑定到父绑定上
 
 绑定操作的另一个常见情况是请求访问父元素的绑定上下文。这是因为它可能不同于子节点的绑定上下文并且包含了子节点可能使用的信息。通常，绑定上下文是可继承的，但当元素\(items\)是基于某些数据源而动态创建时不是。例如，`ListView`基于一个`itemТemplate`创建它的子项目，`itemТemplate`描述`ListView`元素的外观。当这个元素添加到视觉树时，它从一个ListView `items` 数组\(通过相应的index\)获取这个元素的绑定上下文。这个进程为子项目和它的内含UI元素创建了一个新的绑定上下文链。所以，内含UI元素不能访问'ListView'的绑定上下文。为了解决这个问题，NativeScript绑定的基础架构里有两个特别的关键词：`$parent` 和 `$parents` 。第一个表示直接父视觉元素的绑定上下文，第二个可以当作数组来使用\(通过数字或字符串index\)。这就给你了选择来选择`N`级UI嵌套或是得到一个给定类型的父UI元素。我们来看看这在一个现实的例子里是如何工作的。
+
+** XML**
+---
+
+>`<Page loaded="pageLoaded">
+    <GridLayout rows="*" >
+        <ListView items="{{ items }}">
+            <!--Describing how the element will look like-->
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *">
+                    <Label text="{{ $value }}" col="0"/>
+                    <!--The TextField has a different bindingCotnext from the ListView, but has to use its properties. Thus the parents['ListView'] has to be used.-->
+                    <TextField text="{{ $parents['ListView'].test, $parents['ListView'].test }}" col="1"/>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>`
+
+
+
+
+### **js**
+---
+
+> `var observable = require("data/observable"); `
+
+> `var pageModule = require("ui/page"); `
+
+> `var viewModel = new observable.Observable(); 
+`
+> `function pageLoaded(args) { `
+
+> `var page = args> .object;` 
+
+> `viewModel.set("items", [1, 2, 3]); `
+
+> `viewModel.set("test", "Test for parent binding!");`
+
+> `page.bindingContext = viewModel; `
+
+> `} `
+
+> `exports.pageLoaded = pageLoaded;`
