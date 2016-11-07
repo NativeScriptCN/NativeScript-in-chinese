@@ -17,9 +17,9 @@
 
 NativeScript CLI有一些系统需求，你必须在制作app之前处理完备。在我们开始制作前，请确定你完成了 NativeScript 的安装指南
 
-* 完成安装指导
+* [完成安装指导](http://docs.nativescript.org/start/quick-setup)
 
-## [**1.2: 开始你的app**](http://docs.nativescript.org/tutorial/chapter-1#12-start-your-app)
+## **[1.2: 开始你的app](http://docs.nativescript.org/tutorial/chapter-1#12-start-your-app)**
 
 NativeScript CLI安装后，就可以开始创建你的app了。通常，你要**使用 **`tns create`** 命令来创建一个空的 NativeScript 应用**。本教程里，我们搭建了一个样板工程作为“杂货店”的起点。
 
@@ -31,7 +31,7 @@ NativeScript CLI安装后，就可以开始创建你的app了。通常，你要*
 
 然后, 假定你安装了git, 从github 克隆Groceries repo:
 
-> `git clone``https://github.com/NativeScript/sample-Groceries.git`
+> ```git clone``https://github.com/NativeScript/sample-Groceries.git```
 
 接下来, 进入新克隆的 repo's 文件夹:
 
@@ -43,7 +43,7 @@ NativeScript CLI安装后，就可以开始创建你的app了。通常，你要*
 
 **提示: “end” 分支有本教程的最终被状态。 如果你被卡住了可以随时跳到这个分支。**
 
-## **[1.3: 添加目标开发平台](http://docs.nativescript.org/tutorial/chapter-1#13-add-target-development-platforms)**
+## [**1.3: 添加目标开发平台**](http://docs.nativescript.org/tutorial/chapter-1#13-add-target-development-platforms)
 
 你的app已经搭建好了，但在你运行它之前，您需要为您打算开发的每个目标平台初始化一个特定于平台的本地项目
 
@@ -59,7 +59,7 @@ NativeScript CLI安装后，就可以开始创建你的app了。通常，你要*
 
 **注意: 你只有在开发设备上安装好SDK后才能添加平台. 如果你运行**`tns platform add`**命令出现错误, 请回看开发设备环境配置的部分。 **
 
-## [**1.4: 运行你的 app**](http://docs.nativescript.org/tutorial/chapter-1#14-running-your-app)
+## **[1.4: 运行你的 app](http://docs.nativescript.org/tutorial/chapter-1#14-running-your-app)**
 
 平台初始化完成，你就可以在真机或虚拟机上运行app了。
 
@@ -97,7 +97,7 @@ ios+虚拟机上运行
 * `tns device` 命令会列出所有USB连接的ios设备，USB连接的安卓设备，和Genymotion 虚拟设备 ，`tns run能正常运行`. 注意`tns device` 不会列出iOS 设备.
 
 
-## **[1.5: 开发流程](http://docs.nativescript.org/tutorial/chapter-1#15-development-workflow)**
+## [**1.5: 开发流程**](http://docs.nativescript.org/tutorial/chapter-1#15-development-workflow)
 
 此时，你已经下载安装了 NativeScript CLI ，运行app的 iOS 和 Android 条件也齐备。现在你需要一个好的工作流程以使你的更改即时呈现，为此，我们使用 `tns livesync` 命令。
 
