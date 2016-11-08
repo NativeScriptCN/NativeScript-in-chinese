@@ -5,11 +5,7 @@
             "family": "sans",
             "size": 2
         }
-    },
-
-    "links": {
-        "sidebar": {
-            "NativeScript中文社区===>": "http://nativescript.xyz"
-        }
     }
+
+
 }
