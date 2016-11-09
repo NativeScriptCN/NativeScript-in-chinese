@@ -5,7 +5,13 @@
             "family": "sans",
             "size": 2
         }
+    },
+
+    "plugins": ["-splitter"],
+
+    "links": {
+        "sidebar": {
+            "NativeScript中文社区": "http://nativescript.xyz"
+        }
     }
-
-
 }
