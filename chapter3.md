@@ -1,4 +1,4 @@
-# **[Chapter 3—Application Logic ](http://docs.nativescript.org/tutorial/chapter-3#chapter-3application-logic)**应用逻辑
+# [**Chapter 3—Application Logic **](http://docs.nativescript.org/tutorial/chapter-3#chapter-3application-logic)应用逻辑
 
 在这一章中，您将学习如何添加JavaScript逻辑到你的nativescript APP，你会使用构建 NativeScript 框架的基本模式， MVVM ，或是“  **Model**   **View**   **ViewModel** ”。下面是这些词的意思：
 
@@ -11,9 +11,9 @@
 
 独立划分模型、视图和视图模型的最大好处是，你可以使用双向数据绑定；就是说，模型里面的数据变化会立即影响反应在视图上，反之亦然。另一个好处是代码重用，所以你经常可以跨视图使用模型和视图。
 
-杂货店里，目前你只接触了视图 \(`login.xml`\)，在本章你将要创建一个视图模型。为此，我们首先需要向你介绍另外一种文件： **code-behind**（代码后置或是代码隐藏技术）。
+杂货店里，目前你只接触了视图 \(`login.xml`\)，在本章你将要创建一个视图模型。为此，我们首先需要向你介绍另外一种文件： **code-behind**（后台代码文件）。
 
-## [**目录**](http://docs.nativescript.org/tutorial/chapter-3#table-of-contents)
+## **[目录](http://docs.nativescript.org/tutorial/chapter-3#table-of-contents)**
 
 * [3.1: The code-behind后台代码](#code-behind)
 * [3.2: Navigating screens 导航页面](#navigating-screens)
@@ -84,7 +84,7 @@ NativeScript里后台代码文件就是一份和视图有相同名字的JavaScri
 
 既然你能看到点击手势生效，那就让它们做一些比弹出警告更有意思的事情吧。
 
-## **[3.2: Navigating screens](http://docs.nativescript.org/tutorial/chapter-3#32-navigating-screens)**导航页面 {#navigating-screens}
+## [**3.2: Navigating screens**](http://docs.nativescript.org/tutorial/chapter-3#32-navigating-screens)导航页面 {#navigating-screens}
 
 当你点击 “Sign up for Groceries” 按钮，你期望一个导航切换到注册页面。这在 NativeScript 里是非常简单就办到的。
 
@@ -128,7 +128,7 @@ NativeScript里后台代码文件就是一份和视图有相同名字的JavaScri
 > 
 > **虽然我们的杂货店app不使用复杂的导航策略，你还有几种可能来跳出这个框框，比如\*\***[TabView](http://docs.nativescript.org/ui-views#tabview)**** 和****[SegmentedBar](http://docs.nativescript.org/ui-views#segmentedbar)****。 SideDrawer 组件也可免费用在 Telerik公司的 ****[UI for NativeScript ](http://docs.telerik.com/devtools/nativescript-ui/introduction)**\*\*产品上。**
 
-## **[3.3: Accessing UI components](http://docs.nativescript.org/tutorial/chapter-3#33-accessing-ui-components)**获取UI组件 {#accessing-ui-components}
+## [**3.3: Accessing UI components**](http://docs.nativescript.org/tutorial/chapter-3#33-accessing-ui-components)获取UI组件 {#accessing-ui-components}
 
 是时候看下数据如何在前段和后端之间来回流动的形式了。
 
@@ -178,7 +178,7 @@ NativeScript里后台代码文件就是一份和视图有相同名字的JavaScri
 
 通过在 JavaScript 里获取UI组件，你能操作这些组件在前端的外观和行为。然而，单个地获取这些UI组件是非常手动的程序，也使得跟踪UI状态比较困难。这里就该**视图模型**出马了。
 
-## [**3.4: Adding a view model**](http://docs.nativescript.org/tutorial/chapter-3#34-adding-a-view-model)添加一个视图模型 {#34}
+## **[3.4: Adding a view model](http://docs.nativescript.org/tutorial/chapter-3#34-adding-a-view-model)**添加一个视图模型 {#34}
 
 NativeScript 通过一个叫做 'Observable'的模块 提供**视图模型**功能 。
 
