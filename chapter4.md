@@ -264,7 +264,7 @@ ListView部件允许你在屏幕上显示一些东西的列表，就像你想要
 
 如果你原样运行这些代码，你不会看到杂货列表有任何东西。首先你需要建立一种方法来管理ListView模块里面的数据，为此你需要一个新的 NativeScript 模块：也就是 ObservableArray 。
 
-## **[4.4: Working with arrays](http://docs.nativescript.org/tutorial/chapter-4#44-working-with-arrays)****\*\***\*\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*使\_\*用数组 {#4-4}
+## **[4.4: Working with arrays](http://docs.nativescript.org/tutorial/chapter-4#44-working-with-arrays)****\*\***\*\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*使\_\*用数组 {#4-4}
 
 在本教程之前的部分你见过如何创建 observables 并如何用它们通过后台代码文件和视图模型来联接XML视图。在本节你将要做同样的事情，一个额外的联接，它涉及到使这个 `items` 属性生效。
 
@@ -278,35 +278,29 @@ ListView组件的 `items` 属性采用了一个数组，为了在视图模型上
 > 
 > 打开 `app/views/list/list.js` 并粘贴下面的代码：
 > 
-> `var dialogsModule = require("ui/dialogs");`
+> `var dialogsModule = require("ui/dialogs"); `
 > 
-> `var Observable = require("data/observable").Observable;`
+> `var observableModule = require("data/observable"); `
 > 
-> `var ObservableArray = require("data/observable-array").ObservableArray;`
+> `var ObservableArray = require("data/observable-array").ObservableArray; `
 > 
-> `var page;`
+> `var page; `
 > 
-> `var pageData = new Observable({`
+> `var pageData = new observableModule.fromObject({ `
 > 
-> `groceryList: new ObservableArray([`
+> `    groceryList: new ObservableArray([ `
 > 
-> `{ name: "eggs" },`
+> `        { name: "eggs" }, `
 > 
-> `{ name: "bread" },`
+> `        { name: "bread" }, `
 > 
-> `{ name: "cereal" }`
+> `        { name: "cereal" } `
 > 
-> `])`
+> `    ]) `
 > 
-> `});`
+> `}); `
 > 
-> `exports.loaded = function(args) {`
-> 
-> `page = args.object;`
-> 
-> `page.bindingContext = pageData;`
-> 
-> `};`
+> `exports.loaded = function(args) { page = args.object; page.bindingContext = pageData; }; `
 
 这里，你将创建一个新的 Observable 对象名为 `pageData` ，你在 `load()` 方法里将它设置为页面的 `bindingContext` 。 在Observable 内部，你单独设置了一个 `"groceryList"` 属性作为 ObservableArray 类的一个新实例。注意 `"groceryList"` 属性如何与 `<ListView items="{{ groceryList }}">` 对应，也注意数组里面的每个 `"name"` 属性如何与 `<Label text="{{ name }}">对应` 。如果运行app你会看到list界面显示出硬编码数据：
 
