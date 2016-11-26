@@ -7,7 +7,7 @@
         }
     },
 
-    "plugins": ["-splitter","-search"],
+    "plugins": ["-splitter"],
 
     "links": {
         "sidebar": {
