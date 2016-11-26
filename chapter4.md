@@ -264,7 +264,7 @@ ListView部件允许你在屏幕上显示一些东西的列表，就像你想要
 
 如果你原样运行这些代码，你不会看到杂货列表有任何东西。首先你需要建立一种方法来管理ListView模块里面的数据，为此你需要一个新的 NativeScript 模块：也就是 ObservableArray 。
 
-## **[4.4: Working with arrays](http://docs.nativescript.org/tutorial/chapter-4#44-working-with-arrays)****\*\***\*\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*\_\*_\*使\_\*用数组 {#4-4}
+## **[4.4: Working with arrays](http://docs.nativescript.org/tutorial/chapter-4#44-working-with-arrays)使用数组** {#4-4}
 
 在本教程之前的部分你见过如何创建 observables 并如何用它们通过后台代码文件和视图模型来联接XML视图。在本节你将要做同样的事情，一个额外的联接，它涉及到使这个 `items` 属性生效。
 
