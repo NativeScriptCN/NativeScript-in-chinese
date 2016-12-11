@@ -18,5 +18,5 @@
     * [模块](modules.md)
     * [用JS使用原生API](accessing_native_apis.md)
     * [多线程](multithreadingmodel.md)
-* [how\_nativescript\_works?](hownativescriptworks.md)
+* [NativeScript的工作原理](hownativescriptworks.md)
 
